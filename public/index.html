@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="./css/tailwind.css"> -->
+    <title>Document</title>
+</head>
+<body>
+    <div id="home">
+        <transition name='fade'>
+            <div v-if='toggleMenu' class="menu-container fixed w-full h-screen bg-black text-white z-20 p-5">
+                <span class=" font-bold cursor-pointer" @click='openMenu'>close</span>
+            </div>  
+        </transition>
+        <page-loader></page-loader>
+        <navbar-a :on-burger-click='openMenu'></navbar-a>
+        <div class="section-header w-full bg-yellow text-white flex items-center justify-center">
+            <div class="header-center text-center text-black">
+                <div class="header-title font-bold text-4xl font-sans">Awsem Fun</div>
+                <div class="header-tags my-5 text-2xl font-bold text-red">#awesomefun</div>
+                <div class="header-text leading-tight text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt ratione voluptate enim odio eius ipsa animi. Temporibus, ad repellat! Fuga nulla soluta aliquam debitis autem saepe corrupti ab sint doloribus!</div>
+            </div>
+        </div>
+        <div class="container-fluid mx-auto p-2 z-0">
+            <div class="prize-container flex items-end justify-center">
+                <div class="item bg-teal flex items-center justify-center text-white m-3" v-for='(item , i) in items'>item1</div>
+            </div>
+        </div>
+        <div class="header-title text-center container mx-auto mt-10">
+            <div class="header-title--text text-black text-xl text-center font-sans leading-tight font-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem eum id repellendus harum</div>
+            <button class="btn-cta bg-blue text-white py-3 px-5 border-b-8 border-blue-darkest uppercase font-bold mx-auto mt-8 rounded-lg">play game</button>
+            <div class="text text-xl mt-10 font-bold">periode 11 maret</div>
+            <div class="text-sm mt-2 font-bold">syarat ketentuan berlaku</div>
+        </div>
+
+        <div class="howto-container mt-24 p-4 flex justify-end">
+            <div class="howto-box bg-white shadow"></div>
+        </div>
+
+        <div class="product-container mt-3 p-3">
+            <div class="product-box w-full bg-red p-10">
+                <div class="product-title mx-auto flex items-center justify-center">
+                    <div class="bg-white py-3 px-5 font-bold text-3xl uppercase border-b-8 border-2 border-black">chupa chups sour jelly</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="container py-10 flex justify-between mx-auto">
+                <div class="footer-left flex-1 text-left"></div>
+                <div class="footer-center flex-1 text-lg text-center">
+                    <div class="text font-sans font-bold ">connect with us</div>
+                </div>
+                <div class="footer-right flex-1 text-lg text-right">
+                    <div class="copyright font-sans font-bold">2019 Chupa chups. All Right Reserved</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.4/vue.min.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>
