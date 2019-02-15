@@ -123,7 +123,7 @@ function _default() {
     });
   });
 }
-},{"_bundle_loader":"../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/bundle-loader.js","./Index.scss":[["Index.b4826036.css","components/Button/Index.scss"],"Index.b4826036.js","components/Button/Index.scss"]}],"pages/About/Index.scss":[function(require,module,exports) {
+},{"_bundle_loader":"../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/bundle-loader.js","./Index.scss":[["Index.b4826036.css","components/Button/Index.scss"],"components/Button/Index.scss"]}],"pages/About/Index.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -191,7 +191,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57501" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50994" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
@@ -448,29 +448,7 @@ LazyPromise.prototype.catch = function (onError) {
   if (this.promise === null) this.promise = new Promise(this.executor);
   return this.promise.catch(onError);
 };
-},{"./bundle-url":"../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/loaders/browser/js-loader.js":[function(require,module,exports) {
-module.exports = function loadJSBundle(bundle) {
-  return new Promise(function (resolve, reject) {
-    var script = document.createElement('script');
-    script.async = true;
-    script.type = 'text/javascript';
-    script.charset = 'utf-8';
-    script.src = bundle;
-
-    script.onerror = function (e) {
-      script.onerror = script.onload = null;
-      reject(e);
-    };
-
-    script.onload = function () {
-      script.onerror = script.onload = null;
-      resolve();
-    };
-
-    document.getElementsByTagName('head')[0].appendChild(script);
-  });
-};
-},{}],"../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/loaders/browser/css-loader.js":[function(require,module,exports) {
+},{"./bundle-url":"../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/loaders/browser/css-loader.js":[function(require,module,exports) {
 module.exports = function loadCSSBundle(bundle) {
   return new Promise(function (resolve, reject) {
     var link = document.createElement('link');
@@ -491,6 +469,6 @@ module.exports = function loadCSSBundle(bundle) {
   });
 };
 },{}],0:[function(require,module,exports) {
-var b=require("../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/bundle-loader.js");b.register("js",require("../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/loaders/browser/js-loader.js"));b.register("css",require("../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/loaders/browser/css-loader.js"));b.load([]).then(function(){require("pages/About/index.js");});
+var b=require("../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/bundle-loader.js");b.register("css",require("../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/loaders/browser/css-loader.js"));b.load([]).then(function(){require("pages/About/index.js");});
 },{}]},{},["../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js",0], null)
 //# sourceMappingURL=/About.d25c1b57.map

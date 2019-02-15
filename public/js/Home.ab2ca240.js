@@ -165,8 +165,11 @@ function render(anime) {
         anime({
           targets: '.item',
           translateY: [140, 0],
-          delay: anime.stagger(100),
-          duration: 2000
+          delay: anime.stagger(50, {
+            from: 'center'
+          }),
+          duration: 1300,
+          easing: 'easeInOutBack'
         });
       },
       openMenu: function openMenu() {
@@ -202,7 +205,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57501" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50994" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

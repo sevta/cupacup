@@ -4,7 +4,8 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "parcel serve src/assets/js/index.js --out-dir public/js --no-cache",
+		"start": "parcel serve src/assets/js/index.js --out-dir public/js --no-cache ",
+		"build": "parcel build src/assets/js/index.js --out-dir public/js --no-cache  --public-url ./js/",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "",
@@ -23,6 +24,7 @@
 	},
 	"devDependencies": {
 		"babel-core": "^6.26.3",
+		"cssnano": "^4.1.9",
 		"sass": "^1.17.0"
 	}
 }

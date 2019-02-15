@@ -24,8 +24,9 @@ export function render(anime) {
 				anime({
 					targets: '.item',
 					translateY: [ 140, 0 ],
-					delay: anime.stagger(100),
-					duration: 2000
+					delay: anime.stagger(50, { from: 'center' }),
+					duration: 1300,
+					easing: 'easeInOutBack'
 				});
 			},
 			openMenu() {
