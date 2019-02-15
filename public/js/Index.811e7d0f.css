@@ -2,17 +2,24 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: white;
 }
 .navbar .burger {
-  width: 26px;
-  height: 26px;
-  background: black;
-  padding: 3px;
+  width: 30px;
+  height: 30px;
+  padding: 4px;
+  border-radius: 7px;
+  border: solid 2px black;
+}
+.navbar .burger.secondary {
+  background: white;
 }
 .navbar .burger .line {
   width: 100%;
-  height: 2px;
+  height: 3px;
   border-radius: 3px;
-  background: white;
+  background: black;
+}
+.navbar .center {
+  position: relative;
+  top: 50px;
 }

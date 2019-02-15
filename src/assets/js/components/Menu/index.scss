@@ -1,0 +1,15 @@
+.menu-full {
+	.inner-menu {
+		.menu-item-container {
+			// width: 900px;
+			.menu-item {
+				&:nth-child(even) {
+					margin-bottom: -200px;
+				}
+				&:nth-child(odd) {
+					margin-top: 200px;
+				}
+			}
+		}
+	}
+}

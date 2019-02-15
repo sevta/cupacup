@@ -1,0 +1,6 @@
+.menu-full .inner-menu .menu-item-container .menu-item:nth-child(even) {
+  margin-bottom: -200px;
+}
+.menu-full .inner-menu .menu-item-container .menu-item:nth-child(odd) {
+  margin-top: 200px;
+}

@@ -1,5 +1,9 @@
 import anime from 'animejs';
+import AOS from 'aos';
+import 'aos/dist/aos';
 let page = window.location.href.split('/').pop();
+
+console.log('AOS here', AOS);
 
 function loadCSS(src) {
 	if (Array.isArray(src)) {
@@ -21,21 +25,52 @@ function loadCSS(src) {
 	}
 }
 
-function loadJS(page) {
-	import('./main.scss').then(() => {
-		switch (page) {
-			case 'index.html': {
-				import('./pages/Home').then((page) => page.render(anime));
-				break;
-			}
-			case 'about.html': {
-				import('./pages/About').then((page) => page.render());
-				break;
-			}
-		}
+// global script
+function runGlobalScript() {
+	document.querySelector('.menu-full span').addEventListener('click', () => {
+		let menuAnimation = anime({
+			targets: '.menu-full',
+			translateY: '40%',
+			opacity: 0
+		});
+
+		menuAnimation.finished.then(() => {
+			document.querySelector('.menu-full').classList.add('hidden');
+		});
 	});
+}
+
+async function loadJS(src) {
+	// load globaly js here
+	const navbar = await import('./components/Navbar');
+	const menu = await import('./components/Menu');
+	await import('./main.scss');
+	navbar.render(anime);
+	menu.render(anime);
+
+	let page = null;
+	switch (src) {
+		case 'index.html': {
+			page = await import('./pages/Home');
+			page.render(anime);
+			break;
+		}
+		case 'profile.html': {
+			page = await import('./pages/Profile');
+			page.render();
+			break;
+		}
+		case 'about.html': {
+			page = await import('./pages/About');
+			page.render();
+			break;
+		}
+	}
 }
 
 // if use css directly
 // loadCSS('https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css');
-window.onload = () => loadJS(page);
+window.onload = () => {
+	runGlobalScript();
+	loadJS(page);
+};

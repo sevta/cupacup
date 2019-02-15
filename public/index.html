@@ -4,52 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <link rel="stylesheet" href="./css/tailwind.css"> -->
     <title>Document</title>
 </head>
 <body>
+    <div class="menu-full fixed pin-y pin-x bg-blue w-full z-50 hidden">
+        <div class='text-white w-full flex justify-end font-bold cursor-pointer'>
+            <span class="mt-10 mr-10" @click='onCloseClick'>close</span>
+        </div>
+        <div class="inner-menu p-3 mt-32">
+            <div class="menu-item-container mx-auto flex justify-center">
+                <div class="menu-item w-32 h-32 bg-white rounded-full" v-for='menu in menuItem'>{{menu}}</div>
+            </div>
+        </div>
+    </div>
+    <!-- navbar -->
+    <div class='navbar w-full fixed px-3 py-2 pt-10 z-30 '>
+        <div class="w-full px-10 mx-auto flex items-center justify-between">
+            <div class="left flex-1 flex justify-start">
+                <a href="http://127.0.0.1:5500/public/index.html"
+                    class='uppercase cursor-pointer text-xl font-bold no-underline text-black block text-white'>
+                    logo
+                </a>
+            </div>
+            <div class="center flex-1 flex justify-center">
+                <div class="navbar-title-center bg-orange p-3 hidden">
+                    <h1>center</h1>
+                </div>
+            </div>
+            <div class="right flex-1 flex-justify-end">
+                <div class="inner-right flex justify-end items-center">
+                    <div class="cupacup-logo logo font-bold text-white text-sm mr-6 uppercase flex flex-col">
+                        <img src="./img/cupacup_logo.png" alt="">
+                    </div>
+                    <div class="burger cursor-pointer flex flex-col justify-around rounded" @click='toggleMenu'>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end -->
     <div id="home">
-        <transition name='fade'>
-            <div v-if='toggleMenu' class="menu-container fixed w-full h-screen bg-black text-white z-20 p-5">
-                <span class=" font-bold cursor-pointer" @click='openMenu'>close</span>
-            </div>  
-        </transition>
-        <page-loader></page-loader>
-        <navbar-a :on-burger-click='openMenu'></navbar-a>
-        <div class="section-header w-full bg-yellow text-white flex items-center justify-center">
-            <div class="header-center text-center text-black">
-                <div class="header-title font-bold text-4xl font-sans">Awsem Fun</div>
-                <div class="header-tags my-5 text-2xl font-bold text-red">#awesomefun</div>
-                <div class="header-text leading-tight text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt ratione voluptate enim odio eius ipsa animi. Temporibus, ad repellat! Fuga nulla soluta aliquam debitis autem saepe corrupti ab sint doloribus!</div>
+        <div class="section-header w-full text-white py-20 flex items-center justify-center overflow-hidden">
+            <div class="header-center flex flex-col justify-center items-center text-center text-black">
+                <div class="ornament ornament-candy-1" data-aos="fade-in"></div>
+                <div class="ornament ornament-star-1"></div>
+                <div class="ornament ornament-candy-2"></div>
+                <div class="ornament ornament-star-2"></div>
+                <div class="header-img font-bold text-4xl font-sans flex items-center justify-center"></div>
+                <div class="header-tags mt-8 mb-1 text-4xl font-bold text-red">#AwsemFun games</div>
+                <div class="header-text leading-normal text-sm font-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt ratione voluptate enim odio eius ipsa animi. Temporibus, ad repellat! Fuga nulla soluta aliquam debitis autem saepe corrupti ab sint doloribus!</div>
+                <button class="btn-cta bg-blue mb-8 text-white py-3 px-5 border-b-8 border-blue-darkest uppercase font-bold mx-auto mt-8 rounded-lg">play game</button>
+                <div class="text-lg">periode 1 maret</div>
             </div>
         </div>
-        <div class="container-fluid mx-auto p-2 z-0">
-            <div class="prize-container flex items-end justify-center">
-                <div class="item bg-teal flex items-center justify-center text-white m-3" v-for='(item , i) in items'>item1</div>
+
+        <div class="section-prize-howto py-12 ">
+            <div class="prize-ornament-container w-full flex items-center justify-center absolute pin-x mt-24">
+                <div class="prize-ornament"></div>
             </div>
-        </div>
-        <div class="header-title text-center container mx-auto mt-10">
-            <div class="header-title--text text-black text-xl text-center font-sans leading-tight font-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem eum id repellendus harum</div>
-            <button class="btn-cta bg-blue text-white py-3 px-5 border-b-8 border-blue-darkest uppercase font-bold mx-auto mt-8 rounded-lg">play game</button>
-            <div class="text text-xl mt-10 font-bold">periode 11 maret</div>
-            <div class="text-sm mt-2 font-bold">syarat ketentuan berlaku</div>
-        </div>
-
-        <div class="howto-container mt-24 p-4 flex justify-end">
-            <div class="howto-box bg-white shadow"></div>
-        </div>
-
-        <div class="product-container mt-3 p-3">
-            <div class="product-box w-full bg-red p-10">
-                <div class="product-title mx-auto flex items-center justify-center">
-                    <div class="bg-white py-3 px-5 font-bold text-3xl uppercase border-b-8 border-2 border-black">chupa chups sour jelly</div>
+            <div class="prize-container flex items-end justify-center  mx-auto p-2 z-0">
+                <div class="item flex items-center flex-no-wrap justify-center text-white " v-for='(item , i) in items'></div>
+            </div>
+            
+            <div class="prizes text-center container mx-auto -mt-10">
+                <div class="prize-tag text-black text-xl text-center max-w-sm mx-auto font-sans leading-tight font-bold">yuk mainin gamesnya dan menangin hadiah-hadiah keren ini!</div>
+                <!-- <button class="btn-cta bg-blue text-white py-3 px-5 border-b-8 border-blue-darkest uppercase font-bold mx-auto mt-8 rounded-lg">play game</button> -->
+                <div class="text text-xl mt-10 font-bold">periode 11 maret</div>
+                <div class="text-sm mt-2 font-bold">syarat ketentuan berlaku</div>
+            </div>
+    
+            <div class="howto-container mt-24 p-4 ">
+                <div class="container mx-auto flex justify-between">
+                    <div class="ornament-howto z-10 -mr-24" data-aos="fade-up-left"></div>
+                    <div class="howto-box bg-white shadow mt-32"></div>
                 </div>
             </div>
         </div>
 
-        <div class="footer">
-            <div class="container py-10 flex justify-between mx-auto">
-                <div class="footer-left flex-1 text-left"></div>
+        <div class="product-container bg-red pb-32 relative">
+            <div class="ornament-1"></div> 
+            <div class="ornament-2"></div>
+            <div class="product-title mx-auto"></div>
+            <div class="product-center mt-16 flex items-center justify-center">
+                <div class="left">
+                    <div class="product-1">
+                    </div>
+                </div>
+                <div class="center">
+                    <div class="cupacup-logo bg-teal"></div>
+                </div>
+                <div class="right">
+                    <div class="product-2"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer bg-yellow">
+            <div class="container py-6 flex items-center justify-between mx-auto">
+                <div class="footer-left flex-1 text-left text-lg">
+                    <div class="font-bold font-sans mb-3 capitalize">tersedia di</div>
+                    <div class="partner-logo flex">
+                        <div class="bg-teal mr-3 w-32 h-10 text-white flex justify-center items-center">Gramedia</div>
+                        <div class="bg-purple w-32 h-10 text-white flex justify-center items-center">Rumah</div>
+                    </div>
+                </div>
                 <div class="footer-center flex-1 text-lg text-center">
                     <div class="text font-sans font-bold ">connect with us</div>
                 </div>
@@ -60,6 +122,6 @@
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.4/vue.min.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

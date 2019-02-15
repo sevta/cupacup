@@ -109,7 +109,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/PageLoader/index.js":[function(require,module,exports) {
+},{"./img\\header.jpg":[["header.8847c8f9.jpg","pages/Home/img/header.jpg"],"pages/Home/img/header.jpg"],"./img\\candy-1.png":[["candy-1.79c93424.png","pages/Home/img/candy-1.png"],"pages/Home/img/candy-1.png"],"./img\\star-1.png":[["star-1.61e9137a.png","pages/Home/img/star-1.png"],"pages/Home/img/star-1.png"],"./img\\candy-2.png":[["candy-2.16eb531f.png","pages/Home/img/candy-2.png"],"pages/Home/img/candy-2.png"],"./img\\star-2.png":[["star-2.02438387.png","pages/Home/img/star-2.png"],"pages/Home/img/star-2.png"],"./img\\awsem-logo.png":[["awsem-logo.0c03fa08.png","pages/Home/img/awsem-logo.png"],"pages/Home/img/awsem-logo.png"],"./img\\prizes-bg.jpg":[["prizes-bg.8327522c.jpg","pages/Home/img/prizes-bg.jpg"],"pages/Home/img/prizes-bg.jpg"],"./img\\prizes\\ornament.png":[["ornament.5b5d590c.png","pages/Home/img/prizes/ornament.png"],"pages/Home/img/prizes/ornament.png"],"./img\\prizes\\prize-1.png":[["prize-1.dd8d6952.png","pages/Home/img/prizes/prize-1.png"],"pages/Home/img/prizes/prize-1.png"],"./img\\prizes\\prize-2.png":[["prize-2.71a685b3.png","pages/Home/img/prizes/prize-2.png"],"pages/Home/img/prizes/prize-2.png"],"./img\\prizes\\prize-3.png":[["prize-3.e2abce0e.png","pages/Home/img/prizes/prize-3.png"],"pages/Home/img/prizes/prize-3.png"],"./img\\prizes\\prize-4.png":[["prize-4.ee20dac9.png","pages/Home/img/prizes/prize-4.png"],"pages/Home/img/prizes/prize-4.png"],"./img\\howto\\petir.png":[["petir.a0acc9d7.png","pages/Home/img/howto/petir.png"],"pages/Home/img/howto/petir.png"],"./img\\howto\\howto-bg.jpg":[["howto-bg.52f4b187.jpg","pages/Home/img/howto/howto-bg.jpg"],"pages/Home/img/howto/howto-bg.jpg"],"./img\\section-product\\section-product-bg.jpg":[["section-product-bg.80ec358d.jpg","pages/Home/img/section-product/section-product-bg.jpg"],"pages/Home/img/section-product/section-product-bg.jpg"],"./img\\section-product\\ornament.1.png":[["ornament.1.7904ee9d.png","pages/Home/img/section-product/ornament.1.png"],"pages/Home/img/section-product/ornament.1.png"],"./img\\section-product\\title-product-bg.png":[["title-product-bg.b93836b2.png","pages/Home/img/section-product/title-product-bg.png"],"pages/Home/img/section-product/title-product-bg.png"],"./img\\section-product\\product-1.png":[["product-1.7ded0a1a.png","pages/Home/img/section-product/product-1.png"],"pages/Home/img/section-product/product-1.png"],"./img\\section-product\\cupacup-hires.png":[["cupacup-hires.905b54c0.png","pages/Home/img/section-product/cupacup-hires.png"],"pages/Home/img/section-product/cupacup-hires.png"],"./img\\section-product\\product-2.png":[["product-2.ed451f5a.png","pages/Home/img/section-product/product-2.png"],"pages/Home/img/section-product/product-2.png"],"_css_loader":"../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/PageLoader/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -119,11 +119,12 @@ exports.default = _default;
 
 function _default() {
   Vue.component('page-loader', {
-    render: function render(h) {
+    render(h) {
       return h("div", {
         "class": "page-loader fixed z-50 pin-y pin-x bg-teal flex items-center justify-center"
       }, [h("h1", ["Loading..."])]);
     }
+
   });
 }
 },{}],"pages/Home/index.js":[function(require,module,exports) {
@@ -142,8 +143,6 @@ var _PageLoader = _interopRequireDefault(require("../../components/PageLoader"))
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-console.log('page loader', _PageLoader.default);
-
 function render(anime) {
   new Vue({
     el: '#home',
@@ -151,27 +150,45 @@ function render(anime) {
       'navbar-a': _Navbar.default,
       'page-loader': _PageLoader.default
     },
-    data: function data() {
+
+    data() {
       return {
-        toggleMenu: false,
-        items: ['items', 'items', 'items', 'items', 'items']
+        items: ['items', 'items', 'items', 'items'],
+        navbarHeight: 92,
+        navbarType: 'primary'
       };
     },
-    mounted: function mounted() {
+
+    mounted() {
       this.animatedItems();
+      this.onScroll();
     },
+
     methods: {
-      animatedItems: function animatedItems() {
+      animatedItems() {
         anime({
           targets: '.item',
-          translateY: [140, 0],
-          delay: anime.stagger(100),
-          duration: 2000
+          translateY: [100, 0],
+          delay: anime.stagger(60, {
+            from: 'center'
+          }),
+          duration: 1200,
+          easing: 'easeInOutBack'
         });
       },
-      openMenu: function openMenu() {
-        this.toggleMenu = !this.toggleMenu;
+
+      onScroll() {
+        window.onscroll = e => {
+          let position = window.scrollY;
+
+          if (position > this.navbarHeight) {
+            console.log('okay give new navbar');
+          } else {
+            console.log('remove this');
+          }
+        };
       }
+
     }
   });
 }
@@ -202,7 +219,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57501" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50054" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
@@ -344,5 +361,122 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},["../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
+},{}],"../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/bundle-loader.js":[function(require,module,exports) {
+var getBundleURL = require('./bundle-url').getBundleURL;
+
+function loadBundlesLazy(bundles) {
+  if (!Array.isArray(bundles)) {
+    bundles = [bundles];
+  }
+
+  var id = bundles[bundles.length - 1];
+
+  try {
+    return Promise.resolve(require(id));
+  } catch (err) {
+    if (err.code === 'MODULE_NOT_FOUND') {
+      return new LazyPromise(function (resolve, reject) {
+        loadBundles(bundles.slice(0, -1)).then(function () {
+          return require(id);
+        }).then(resolve, reject);
+      });
+    }
+
+    throw err;
+  }
+}
+
+function loadBundles(bundles) {
+  return Promise.all(bundles.map(loadBundle));
+}
+
+var bundleLoaders = {};
+
+function registerBundleLoader(type, loader) {
+  bundleLoaders[type] = loader;
+}
+
+module.exports = exports = loadBundlesLazy;
+exports.load = loadBundles;
+exports.register = registerBundleLoader;
+var bundles = {};
+
+function loadBundle(bundle) {
+  var id;
+
+  if (Array.isArray(bundle)) {
+    id = bundle[1];
+    bundle = bundle[0];
+  }
+
+  if (bundles[bundle]) {
+    return bundles[bundle];
+  }
+
+  var type = (bundle.substring(bundle.lastIndexOf('.') + 1, bundle.length) || bundle).toLowerCase();
+  var bundleLoader = bundleLoaders[type];
+
+  if (bundleLoader) {
+    return bundles[bundle] = bundleLoader(getBundleURL() + bundle).then(function (resolved) {
+      if (resolved) {
+        module.bundle.register(id, resolved);
+      }
+
+      return resolved;
+    }).catch(function (e) {
+      delete bundles[bundle];
+      throw e;
+    });
+  }
+}
+
+function LazyPromise(executor) {
+  this.executor = executor;
+  this.promise = null;
+}
+
+LazyPromise.prototype.then = function (onSuccess, onError) {
+  if (this.promise === null) this.promise = new Promise(this.executor);
+  return this.promise.then(onSuccess, onError);
+};
+
+LazyPromise.prototype.catch = function (onError) {
+  if (this.promise === null) this.promise = new Promise(this.executor);
+  return this.promise.catch(onError);
+};
+},{"./bundle-url":"../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],0:[function(require,module,exports) {
+var b=require("../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/bundle-loader.js");b.load([["Navbar.a75e05c1.js","components/Navbar/index.js"]]).then(function(){require("pages/Home/index.js");});
+},{}]},{},["../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js",0], null)
 //# sourceMappingURL=/Home.ab2ca240.map

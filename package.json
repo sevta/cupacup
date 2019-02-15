@@ -4,18 +4,22 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "parcel serve src/assets/js/index.js --out-dir public/js --no-cache",
+		"start": "parcel serve src/assets/js/index.js --out-dir public/js --no-cache ",
+		"build": "parcel build src/assets/js/index.js --out-dir public/js --no-cache  --public-url ./js/",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
 		"animejs": "^3.0.1",
+		"aos": "^3.0.0-beta.6",
 		"autoprefixer": "^9.4.7",
 		"babel-helper-vue-jsx-merge-props": "^2.0.3",
 		"babel-plugin-syntax-jsx": "^6.18.0",
 		"babel-plugin-transform-vue-jsx": "^3.7.0",
+		"babel-polyfill": "^6.26.0",
 		"babel-preset-env": "^1.7.0",
+		"posthtml-include": "^1.2.0",
 		"react": "^16.8.1",
 		"react-dom": "^16.8.1",
 		"tailwindcss": "^0.7.4",
@@ -23,6 +27,10 @@
 	},
 	"devDependencies": {
 		"babel-core": "^6.26.3",
+		"cssnano": "^4.1.9",
 		"sass": "^1.17.0"
-	}
+	},
+	"browserslist": [
+		"last 1 Chrome version"
+	]
 }

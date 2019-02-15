@@ -1,5 +1,12 @@
 @import './tailwind.scss';
 
+body {
+	background-color: khaki;
+}
+
+.menu-full {
+}
+
 .fade-enter-active,
 .fade-leave-active {
 	transform: translateY(0px);

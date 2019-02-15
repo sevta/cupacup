@@ -1,16 +1,31 @@
 .navbar {
 	display: flex;
-	background-color: white;
+	// background-color: white;
+	.right {
+		.cupacup-logo {
+			width: 83px;
+			height: 84px;
+		}
+	}
 	.burger {
-		width: 26px;
-		height: 26px;
-		background: black;
-		padding: 3px;
-		.line {
-			width: 100%;
-			height: 2px;
-			border-radius: 3px;
+		width: 38px;
+		height: 38px;
+		background: white;
+		padding: 4px;
+		border-radius: 10px;
+		border: solid 3px #333;
+		&.secondary {
 			background: white;
 		}
+		.line {
+			width: 100%;
+			height: 4px;
+			border-radius: 10px;
+			background: #333;
+		}
+	}
+	.center {
+		position: relative;
+		top: 50px;
 	}
 }

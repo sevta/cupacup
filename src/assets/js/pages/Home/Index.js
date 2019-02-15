@@ -1,7 +1,6 @@
 import Navbar from '../../components/Navbar';
 import './Index.scss';
 import PageLoader from '../../components/PageLoader';
-console.log('page loader', PageLoader);
 
 export function render(anime) {
 	new Vue({
@@ -12,24 +11,34 @@ export function render(anime) {
 		},
 		data() {
 			return {
-				toggleMenu: false,
-				items: [ 'items', 'items', 'items', 'items', 'items' ]
+				items: [ 'items', 'items', 'items', 'items' ],
+				navbarHeight: 92,
+				navbarType: 'primary'
 			};
 		},
 		mounted() {
 			this.animatedItems();
+			this.onScroll();
 		},
 		methods: {
 			animatedItems() {
 				anime({
 					targets: '.item',
-					translateY: [ 140, 0 ],
-					delay: anime.stagger(100),
-					duration: 2000
+					translateY: [ 100, 0 ],
+					delay: anime.stagger(60, { from: 'center' }),
+					duration: 1200,
+					easing: 'easeInOutBack'
 				});
 			},
-			openMenu() {
-				this.toggleMenu = !this.toggleMenu;
+			onScroll() {
+				window.onscroll = (e) => {
+					let position = window.scrollY;
+					if (position > this.navbarHeight) {
+						console.log('okay give new navbar');
+					} else {
+						console.log('remove this');
+					}
+				};
 			}
 		}
 	});
